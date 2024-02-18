@@ -1,56 +1,62 @@
-// src/views/Login/LoginScreen.js
-import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+// Import React and React Native components
+import React from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-const LoginScreen = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    // Implement your login logic here
-    console.log(username, password);
-    // Navigate to HomeScreen upon successful login
-    navigation.navigate('Home');
-  };
-
+// Define the LoginScreen component
+const LoginScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.heading}>GitHub Browser</Text>
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="GitHub username"
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
+        placeholder="GitHub password"
+        secureTextEntry={true}
       />
-      <Button title="Log In" onPress={handleLogin} />
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
+// StyleSheet for the component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  title: {
+  heading: {
     fontSize: 24,
     marginBottom: 20,
-    textAlign: 'center',
   },
   input: {
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#cccccc',
+    width: '90%',
+    fontSize: 18,
     padding: 10,
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: '#48BBEC',
+    borderRadius: 5,
+  },
+  button: {
+    width: '90%',
+    padding: 15,
+    backgroundColor: '#48BBEC',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
   },
 });
 
+// Export the LoginScreen component
 export default LoginScreen;
